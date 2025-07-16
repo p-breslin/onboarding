@@ -4,7 +4,7 @@ import sys
 
 import httpx
 
-from src.onboarding.errors import FatalApiError, RetryableError
+from src.errors import FatalApiError, RetryableError
 
 from .poller import PollResult, wait_for
 

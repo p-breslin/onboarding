@@ -2,9 +2,9 @@ import json
 import logging
 
 from configs import cfg
-from src.onboarding.auth import authenticate
-from src.onboarding.customer import generate_customer_token
-from src.onboarding.metrics import fetch_compute_job_status
+from src.auth import authenticate
+from src.customer import generate_customer_token
+from src.metrics import fetch_compute_job_status
 
 log = logging.getLogger(__name__)
 

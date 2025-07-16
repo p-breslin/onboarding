@@ -6,22 +6,22 @@ import sys
 import click
 
 from configs import cfg
-from src.onboarding.auth import authenticate
-from src.onboarding.customer import (
+from src.auth import authenticate
+from src.customer import (
     create_customer,
     delete_customer,
     generate_customer_token,
     poll_customer_db,
 )
-from src.onboarding.file_uploader import upload_and_wait
-from src.onboarding.metrics import (
+from src.file_uploader import upload_and_wait
+from src.metrics import (
     compute_metrics,
     fetch_compute_job_status,
     wait_for_compute_completion,
 )
-from src.onboarding.package import set_package, set_product
-from src.onboarding.poller import wait_for
-from src.onboarding.publish import publish_metrics
+from src.package import set_package, set_product
+from src.poller import wait_for
+from src.publish import publish_metrics
 from utils.async_helpers import file_upload_wrapper
 from utils.helpers import confirm_with_timeout
 from utils.logger import setup_logging

@@ -1,7 +1,7 @@
 import asyncio
 from concurrent.futures import ThreadPoolExecutor
 
-from src.onboarding.file_uploader import upload_and_wait
+from src.file_uploader import upload_and_wait
 
 _executor = ThreadPoolExecutor(max_workers=3)
 

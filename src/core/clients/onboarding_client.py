@@ -68,6 +68,7 @@ class OnboardingApiClient:
         files: Optional[Dict[str, Any]] = None,
         metadata: Optional[Dict[str, Any]] = None,
         expected_key: Optional[str] = None,
+        timeout: Optional[httpx.Timeout] = None,
     ) -> Any:
         """
         Internal helper to make HTTP requests.
@@ -80,6 +81,7 @@ class OnboardingApiClient:
             files (dict, optional): Payload for file upload data.
             metadata (dict, optional): File upload information.
             expected_key (str, optional): If provided, return response_json[expected_key].
+            timeout (httpx.Timeout, optional): If provided, overrides the default 30s request timeout.
 
         Returns:
             Parsed JSON response, or the sub-key if expected_key is given.
@@ -92,8 +94,9 @@ class OnboardingApiClient:
         if token:
             headers["Authorization"] = f"Token {token}"
         log.debug(f"Request headers: {headers}")
-
         log.debug(f"{method.upper()} {url}")
+
+        timeout = timeout or httpx.Timeout(30.0)
         resp = self.session.request(
             method,
             url,
@@ -102,6 +105,7 @@ class OnboardingApiClient:
             json=json_data,
             files=files,
             data=metadata,
+            timeout=timeout,
         )
         try:
             resp.raise_for_status()

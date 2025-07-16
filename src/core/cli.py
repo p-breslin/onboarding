@@ -27,7 +27,6 @@ from core.utils.helpers import confirm_with_timeout
 from core.utils.logger import setup_logging
 from core.utils.model_validation import validate_model
 
-setup_logging(stream=False)
 log = logging.getLogger(__name__)
 
 
@@ -47,9 +46,20 @@ async def async_upload_data(client, infos, cfg):
 
 
 @click.group(invoke_without_command=True)
+@click.option(
+    "--log-stream/--no-log-stream",
+    default=False,
+    help="Enable or disable stream logging output.",
+)
+@click.option(
+    "--log-label",
+    default=None,
+    help="Optional label to prefix the saved log filename.",
+)
 @click.pass_context  # shares the setup for every command
-def cli(ctx):
+def cli(ctx, log_stream, log_label):
     """Onboarding toolkit for xFlow."""
+    setup_logging(stream=log_stream, label=log_label)
     client = authenticate(cfg)
     click.echo("Client authenticated")
     ctx.obj = {"cfg": cfg, "client": client}

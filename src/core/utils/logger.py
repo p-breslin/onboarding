@@ -57,6 +57,8 @@ def setup_logging(
 ) -> None:
     """Configures the root logger with a custom formatter and optional file output.
 
+    Console output is optional via the `stream` flag.
+
     Args:
         level (int): Minimum log level to process (default: INFO).
         stream (bool): If True, logs are written to stdout.
@@ -77,20 +79,19 @@ def setup_logging(
         stream_handler.setFormatter(formatter)
         root_logger.addHandler(stream_handler)
 
-    # Save logs to file
-    if not stream or label:
-        timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
-        if label:
-            log_name = f"{label}_{timestamp}.log"
-        else:
-            log_name = f"logs_{timestamp}.log"
+    # Always save logs to file
+    timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    if label:
+        log_name = f"{label}_{timestamp}.log"
+    else:
+        log_name = f"logs_{timestamp}.log"
 
-        savepath = DATA_DIR / "logs" / log_name
-        savepath.parent.mkdir(parents=True, exist_ok=True)
+    savepath = DATA_DIR / "logs" / log_name
+    savepath.parent.mkdir(parents=True, exist_ok=True)
 
-        file_handler = logging.FileHandler(savepath, mode="a", encoding="utf-8")
-        file_handler.setFormatter(formatter)
-        root_logger.addHandler(file_handler)
+    file_handler = logging.FileHandler(savepath, mode="a", encoding="utf-8")
+    file_handler.setFormatter(formatter)
+    root_logger.addHandler(file_handler)
 
     # Minimum level of logs to process
     root_logger.setLevel(level)

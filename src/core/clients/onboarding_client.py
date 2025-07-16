@@ -5,7 +5,7 @@ from typing import Any, Dict, List, Optional
 import httpx
 from urllib3.exceptions import InsecureRequestWarning
 
-from src.errors import FatalApiError, RetryableError
+from core.errors import FatalApiError, RetryableError
 
 log = logging.getLogger(__name__)
 warnings.filterwarnings("ignore", category=InsecureRequestWarning)  # annoying

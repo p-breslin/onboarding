@@ -4,9 +4,8 @@ import sys
 
 import httpx
 
-from src.errors import FatalApiError, RetryableError
-
-from .poller import PollResult, wait_for
+from core.errors import FatalApiError, RetryableError
+from core.poller import PollResult, wait_for
 
 log = logging.getLogger(__name__)
 

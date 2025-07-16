@@ -2,7 +2,7 @@ import json
 import logging
 import sys
 
-from .poller import PollResult, wait_for
+from core.poller import PollResult, wait_for
 
 log = logging.getLogger(__name__)
 

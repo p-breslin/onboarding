@@ -1,8 +1,8 @@
 import logging
 from typing import Any, Optional
 
-from clients.onboarding_client import OnboardingApiClient
-from configs import cfg
+from core.clients.onboarding_client import OnboardingApiClient
+from core.configs import cfg
 
 log = logging.getLogger(__name__)
 

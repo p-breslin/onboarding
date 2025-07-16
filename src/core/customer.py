@@ -1,9 +1,8 @@
 import json
 import logging
 
-from clients.mysql_client import mysql_cursor
-
-from .poller import PollResult
+from core.clients.mysql_client import mysql_cursor
+from core.poller import PollResult
 
 log = logging.getLogger(__name__)
 

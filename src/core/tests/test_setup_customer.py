@@ -6,11 +6,11 @@ import time
 
 import httpx
 
-from clients.mysql_client import mysql_cursor
-from clients.onboarding_client import OnboardingApiClient
-from configs import cfg
-from utils.logger import setup_logging
-from utils.model_validation import validate_model
+from core.clients.mysql_client import mysql_cursor
+from core.clients.onboarding_client import OnboardingApiClient
+from core.configs import cfg
+from core.utils.logger import setup_logging
+from core.utils.model_validation import validate_model
 
 log = logging.getLogger(__name__)
 

@@ -2,9 +2,9 @@ import json
 import logging
 import sys
 
-from clients.onboarding_client import OnboardingApiClient
-from configs import cfg
-from utils.logger import setup_logging
+from core.clients.onboarding_client import OnboardingApiClient
+from core.configs import cfg
+from core.utils.logger import setup_logging
 
 setup_logging()
 log = logging.getLogger(__name__)

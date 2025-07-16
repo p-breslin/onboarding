@@ -4,9 +4,10 @@ import logging
 import sys
 import time
 
-from clients.onboarding_client import OnboardingApiClient
 from configs import cfg
-from utils.logger import setup_logging
+
+from core.clients.onboarding_client import OnboardingApiClient
+from core.utils.logger import setup_logging
 
 setup_logging(level=2)
 log = logging.getLogger(__name__)

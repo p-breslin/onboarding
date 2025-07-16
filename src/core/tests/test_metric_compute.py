@@ -5,9 +5,9 @@ import time
 
 from dotenv import load_dotenv
 
-from clients.onboarding_client import OnboardingApiClient
-from configs import cfg
-from utils.logger import setup_logging
+from core.clients.onboarding_client import OnboardingApiClient
+from core.configs import cfg
+from core.utils.logger import setup_logging
 
 load_dotenv()
 setup_logging()

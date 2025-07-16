@@ -3,10 +3,10 @@ import logging
 import os
 from datetime import datetime, timedelta, timezone
 
-from clients.onboarding_client import OnboardingApiClient
-from configs import cfg
-from utils.data_source_definition import active_repos, jira_projects
-from utils.logger import setup_logging
+from core.clients.onboarding_client import OnboardingApiClient
+from core.configs import cfg
+from core.utils.data_source_definition import active_repos, jira_projects
+from core.utils.logger import setup_logging
 
 setup_logging(level=2)
 log = logging.getLogger(__name__)

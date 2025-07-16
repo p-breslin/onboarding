@@ -1,6 +1,11 @@
 # Environment variables
 .env
 
+# Packaging artifacts
+*.egg-info/
+build/
+dist/
+
 # Virtual environment
 .venv/
 .uv/
@@ -15,3 +20,11 @@ __pycache__/
 
 # macOS system files
 .DS_Store
+
+# Pytest and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs or runtime
+*.log

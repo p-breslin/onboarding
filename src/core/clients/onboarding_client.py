@@ -14,9 +14,7 @@ warnings.filterwarnings("ignore", category=InsecureRequestWarning)  # annoying
 class OnboardingApiClient:
     """Client for interacting with the onboarding API.
 
-    Handles authentication, token management, and standard HTTP request execution.
-    Provides methods for sending requests with JSON bodies, file uploads, and optional
-    authentication headers.
+    Handles authentication, token management, and standard HTTP request execution. Provides methods for sending requests with JSON bodies, file uploads, and optional authentication headers.
 
     Attributes:
         base_url (str): Base URL for the onboarding API.

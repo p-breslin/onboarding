@@ -28,26 +28,14 @@ class OnboardingApiClient:
     """
 
     def __init__(self, base_url: str, email: str, password: str):
-        """Internal helper to send HTTP requests to the onboarding API.
+        """Initializes the Onboarding API client.
 
-        Supports JSON payloads, file uploads, query parameters, and custom headers.
+        Sets up the HTTP session and stores credentials for future requests.
 
         Args:
-            method (str): HTTP method (e.g., 'get', 'post', 'delete').
-            path (str): Endpoint path, appended to the base URL.
-            token (Optional[str]): Auth token for Authorization header.
-            params (Optional[Dict[str, Any]]): Query string parameters.
-            json_data (Optional[Dict[str, Any]]): JSON body to send in the request.
-            files (Optional[Dict[str, Any]]): Files to upload as multipart/form-data.
-            metadata (Optional[Dict[str, Any]]): Extra form data (used with file uploads).
-            expected_key (Optional[str]): If set, extract this key from the JSON response.
-
-        Returns:
-            Any: Parsed JSON response, or sub-key value if `expected_key` is set.
-                  If the response has no body, returns {} or None accordingly.
-
-        Raises:
-            httpx.HTTPStatusError: If the response contains an HTTP error status.
+            base_url (str): Base URL for the onboarding API.
+            email (str): Admin user's email.
+            password (str): Admin user's password.
         """
         self.base_url = base_url
         self.email = email
@@ -70,21 +58,23 @@ class OnboardingApiClient:
         expected_key: Optional[str] = None,
         timeout: Optional[httpx.Timeout] = None,
     ) -> Any:
-        """
-        Internal helper to make HTTP requests.
+        """Internal helper to make HTTP requests.
+
+        Supports JSON requests, file uploads (with additional metadata), query parameters, and token-authenticated requests.
 
         Args:
-            method (str): HTTP method ('get', 'post', etc.).
-            path (str): API path (appended to base_url).
-            token (str, optional): JWT for Authorization header.
-            json_data (dict, optional): JSON body to send.
-            files (dict, optional): Payload for file upload data.
-            metadata (dict, optional): File upload information.
-            expected_key (str, optional): If provided, return response_json[expected_key].
-            timeout (httpx.Timeout, optional): If provided, overrides the default 30s request timeout.
+            method (str): HTTP method (e.g., 'get', 'post', etc.).
+            path (str): Endpoint path, appended to the base URL.
+            token (Optional[str]): JWT for Authorization header.
+            params (Optional[Dict[str, Any]]): Query string parameters.
+            json_data (Optional[Dict[str, Any]]): JSON body payload.
+            files (Optional[Dict[str, Any]]): Multipart file upload content.
+            metadata (Optional[Dict[str, Any]]): Additional form data (e.g., fields describing the file).
+            expected_key (Optional[str]): If provided, return response_json[expected_key].
+            timeout (Optional[httpx.Timeout]): Timeout override for the request.
 
         Returns:
-            Parsed JSON response, or the sub-key if expected_key is given.
+            Any: Full JSON response, or a nested key if `expected_key` is provided.
         """
         url = f"{self.base_url}{path}"
         headers: Dict[str, str] = {}

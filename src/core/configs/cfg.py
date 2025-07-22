@@ -3,6 +3,8 @@ import os
 
 from dotenv import load_dotenv
 
+from core.utils.paths import DATA_DIR
+
 load_dotenv()
 log = logging.getLogger(__name__)
 
@@ -64,14 +66,14 @@ POLLING_INTERVAL_SECONDS = 15
 TIMEOUT_SECONDS = 60 * 15
 
 # Data files for upload
-FILE_UPLOAD_PATH = "data/xflow_engineering/"
+FILE_UPLOAD_PATH = f"{DATA_DIR}/xflow_engineering/"
 DEMO_DATA_INFO = {
     "file": "xflow_engineering_org_data_demo.xlsx",
     "description": "Engineering Demo Data",
     "filetype": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
 }
 KPI_DATA_INFO = {
-    "file": "KPI_Engineering_CustomerSupport_Report_3.csv",
+    "file": "KPI_Engineering_CustomerSupport_Report 3.csv",
     "description": "KPI Data",
     "filetype": "text/csv",
 }

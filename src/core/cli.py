@@ -52,14 +52,19 @@ async def async_upload_data(client, infos, cfg):
     help="Enable or disable stream logging output.",
 )
 @click.option(
+    "--log-level",
+    default=20,
+    help="10=debug, 20=info (default), 30=warning, error=40, 50=critical.",
+)
+@click.option(
     "--log-label",
     default=None,
     help="Optional label to prefix the saved log filename.",
 )
 @click.pass_context  # shares the setup for every command
-def cli(ctx, log_stream, log_label):
+def cli(ctx, log_level, log_stream, log_label):
     """Onboarding toolkit for xFlow."""
-    setup_logging(stream=log_stream, label=log_label)
+    setup_logging(level=log_level, stream=log_stream, label=log_label)
     client = authenticate(cfg)
     click.echo("Client authenticated")
     ctx.obj = {"cfg": cfg, "client": client}

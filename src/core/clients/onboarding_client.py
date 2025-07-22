@@ -374,7 +374,7 @@ class OnboardingApiClient:
     def compute_job_status(
         self,
         jobId: str,
-        parentId: int = None,
+        parentId: int = 1,
         startDate: str = None,
         timeRange: int = None,
         isPublished: int = 0,

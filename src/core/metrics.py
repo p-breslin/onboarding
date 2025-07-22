@@ -50,6 +50,7 @@ def poll_compute_status(client, job_id) -> PollResult:
         sys.exit(1)
 
     payload = summary.get("payload", {})
+    log.debug("Compute Summary:\n%s", json.dumps(payload, indent=2))
     data_list = payload.get("data") or []
     if not data_list:
         log.info("No summary data yet.")

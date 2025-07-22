@@ -8,7 +8,7 @@ import yaml
 from arango import ArangoClient
 from arango.database import StandardDatabase
 
-from scripts.paths import CONFIG_DIR
+from core.utils.paths import CONFIG_DIR
 
 log = logging.getLogger(__name__)
 

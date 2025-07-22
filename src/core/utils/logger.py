@@ -2,7 +2,7 @@ import datetime
 import logging
 import sys
 
-from scripts.paths import DATA_DIR
+from core.utils.paths import DATA_DIR
 
 
 class CustomFormatter(logging.Formatter):
